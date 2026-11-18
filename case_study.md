@@ -1,4 +1,4 @@
-# Loan files take too long to read. A redesign that keeps the loan officer in charge
+# Reading loan files by hand: keeping the officer in charge
 
 Craig Carlos Ouma, data and systems engineer, Nairobi
 
