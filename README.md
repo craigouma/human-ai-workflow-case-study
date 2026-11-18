@@ -1,4 +1,4 @@
-# Loan files take too long to read: a redesign that keeps the loan officer in charge
+# Reading loan files by hand: keeping the officer in charge
 
 A one-page design case study on redesigning a document-based loan assessment workflow for housing microfinance. An AI system does the reading and flagging, a simple scorecard recommends, and a loan officer stays the decision-maker. It is a work sample for a human-AI collaboration design role and shows how a workflow can be analysed, redesigned with AI, kept under human control and tested.
 
@@ -15,7 +15,7 @@ A one-page design case study on redesigning a document-based loan assessment wor
 
 ## How the page was produced
 
-Drafted with Claude Code, Anthropic's coding assistant. The author approved the study figures before they were used. Steps, in order:
+The author approved the study figures before they were used. Steps, in order:
 
 1. **Evidence.** Read the study paper and repository. Recomputed the headline figures from the study's decision files. Listed the paper's inconsistencies and the figures to leave out (`docs/evidence.md`).
 2. **Sources.** Opened six public sources and checked each quoted phrase (`docs/sources.md`).
