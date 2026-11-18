@@ -1,9 +1,9 @@
 {
   "meta": {
-    "title": "Loan files take too long to read",
-    "subtitle": "A redesign that keeps the loan officer in charge",
-    "html_title": "Loan files take too long to read: a redesign that keeps the loan officer in charge",
-    "og_title": "Loan files take too long to read: a redesign that keeps the loan officer in charge",
+    "title": "Reading loan files by hand",
+    "subtitle": "Keeping the officer in charge, with AI doing the reading",
+    "html_title": "Reading loan files by hand: keeping the officer in charge",
+    "og_title": "Reading loan files by hand: keeping the officer in charge",
     "og_description": "A design case for housing microfinance. The AI reads documents, code raises review flags, a scorecard recommends and the loan officer decides. Built on a published study. Not deployed at any lender. The user test is a plan.",
     "og_image": "diagram/workflow.png",
     "scholar": false,
