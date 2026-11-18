@@ -7,7 +7,8 @@ What it does, in order:
   1. converts each OpenType (CFF) file to TrueType outlines, which Word can embed;
   2. subsets it to Latin letters, digits and common punctuation, to keep the .docx small;
   3. obfuscates it as the OOXML spec requires (first 32 bytes XORed with a GUID key) and stores it as word/fonts/*.odttf;
-  4. registers the four styles in word/fontTable.xml and its relationships, and declares the .odttf content type.
+  4. registers the four styles in word/fontTable.xml and its relationships, and declares the .odttf content type;
+  5. sets every colour in word/styles.xml to black.
 """
 import io
 import re
@@ -118,6 +119,11 @@ def main(docx_path, font_dir):
 
     for _, target, _, _, blob in embedded:
         items[f"word/{target}"] = blob
+
+    # The generator ships blue defaults for headings and links. Force every style colour to black.
+    styles = items["word/styles.xml"].decode()
+    styles = re.sub(r'<w:color w:val="[0-9A-Fa-f]{6}"[^>]*/>', '<w:color w:val="000000"/>', styles)
+    items["word/styles.xml"] = styles.encode()
 
     ct = items["[Content_Types].xml"].decode()
     if "odttf" not in ct:
