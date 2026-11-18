@@ -34,7 +34,7 @@ Type: **Evidence** is a figure from the study (`docs/evidence.md`). **Source** i
 | Evidence | Falsified documents passed the scorecard in 16.7% to 19.8% of cases, and an error-free reader passed 19.7% to 19.8%, so reading is not verification. | E2: Tables 4 and 6, recomputed | Evidence |
 | Evidence | Code checks about halved that (10.1% with an error-free reader). | E3: 19.7% to 10.1% is a 49% fall | Evidence |
 | Evidence | The checks sent more clean files to a person (32.3% to 56.1% against 15.5% to 17.5%), mostly misread fields. | E3: Table 3 total referrals. 90.4% to 97.1% of flagged files held a reading error, recomputed | Evidence |
-| Evidence | Caveats: synthetic consumer-credit documents, small models, no human reviewers. | E6 and `docs/evidence.md`, sections 6 and 7 | Evidence |
+| Evidence | Caveats: no human reviewers, so the officer's role is untested, plus synthetic consumer-credit documents and small models. | E6 and `docs/evidence.md`, sections 6 and 7 | Evidence |
 | Responsible AI | The loan officer decides, can always override, the system never declines anyone, every applicant can ask for a person. | Steps 1, 6 and 7 | Design |
 | Responsible AI | The four checks run in code, not in a prompt. Each recommendation shows the fields used and where each came from. | Steps 4 to 6 | Design |
 | Responsible AI | Consent first, only needed fields kept, overrides logged and reviewed monthly. | Steps 1 and 8 | Design |
@@ -52,6 +52,14 @@ Type: **Evidence** is a figure from the study (`docs/evidence.md`). **Source** i
 5. **The DOCX now embeds its font.** See the table above.
 6. **Title shortened** and its time claim removed (see decision 1).
 7. **All text set in black**, in the PDF, the DOCX and the diagram (see decision 6).
+
+## Read of the live page by an outside reviewer
+
+An outside reader reviewed the published page. Three points, each checked:
+
+1. **The key finding overreached.** It opened with "let the AI read the documents and let a person decide". The study had a scorecard make the decision and tested no human reviewers, so the loan officer is the design's addition and not a tested result. The web page now says so ("The redesign adds a loan officer, which the study did not test"). The PDF caveat says the same ("no human reviewers, so the officer's role is untested").
+2. **The 10.1% figure.** It is in the paper, in Table 6 (Section 5.3), as the oracle ASR of C: 10.1% for Qwen and Phi and 9.7% for the smaller Olmo run. Recomputed from the decision files: 203 of 2,006 attacks. It does not appear in the paper's abstract or on the study's landing page, so the tile on the web page now cites Table 6.
+3. **The PDF.** One A4 page. Body text is 10 pt, headings 10.5 pt, title 16.5 pt. The diagram is 180 mm wide and prints its text between 6.1 pt and 8.7 pt: step titles 7.7 pt, detail lines and legend 6.9 pt, the AI and CODE tags and the loop label 6.1 pt. All text is black.
 
 ## Plain-language check
 
