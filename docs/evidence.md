@@ -1,6 +1,6 @@
 # Evidence from the study
 
-Status: **draft for Craig's approval.** Nothing on the case study page uses a number until it is approved in section 9.
+Status: figures E1 to E3 and the scope line E6 in section 9 are approved for the case study page. The page uses no other study number.
 
 Study: "Where Should the LLM Sit? Architectural Defenses Against Document-Borne Prompt Injection in Automated Credit Underwriting".
 - Repository: https://github.com/craigouma/llm-underwriting-injection (read at commit `0f0cda8`; numbers generated from commit `1f57ab4`)
@@ -144,7 +144,7 @@ These are gaps between the study and a housing microfinance workflow. The page h
 
 ## 8. Inconsistencies and definition problems found
 
-### 1. Two review-rate figures with different definitions (the one you asked me to look for)
+### 1. Two review-rate figures with different definitions
 - The abstract, the landing page and the headline say C "flags 17.7% to 48.6% of clean bundles for review". That counts only C's check flags.
 - Table 3 also reports "Refer" for C: 32.3% to 56.1%. That counts every referral: the scorecard's own refer band, parse failures and check flags.
 - B's own referral rate is already 15.5% to 17.5%, mostly the scorecard's refer band (15.0% on the test split). Some flagged bundles overlap with it (for example 29 of Phi's 177 flagged bundles were already referred by B, **R**).
@@ -154,7 +154,7 @@ These are gaps between the study and a housing microfinance workflow. The page h
 ### 2. A discussion claim that Table 6 contradicts
 - Section 6 (Discussion) says: "With a more accurate extractor the burden of review falls, and the attack success rate does not rise."
 - Table 6 shows C's falsified-document success is **higher** with the perfect extractor (10.1%, 10.1%, 9.7%) than with the three models (5.7%, 7.9%, 8.0%). Section 5.3 explains why: extraction errors on falsified bundles raise extra flags that the oracle never sees. So a more accurate reader would lower review work and let more falsified documents through.
-- **What I will use:** the conservative pair, B oracle 19.7% to C oracle 10.1%, next to the measured 5.7% to 8.0%. I suggest you correct the Discussion sentence in the paper. I have not touched your repository.
+- **What I will use:** the conservative pair, B oracle 19.7% to C oracle 10.1%, next to the measured 5.7% to 8.0%. The Discussion sentence in the study paper should be corrected to match Table 6. The study repository is unchanged.
 
 ### 3. Fragile verdict: H3 for Phi
 - H3 holds for Phi by a margin of 0.2 points (C flags 17.7% against B's refer rate of 17.5%). The decision log records that this verdict flipped from "not supported" to "supported" after the group flags were corrected. I will not cite hypothesis verdicts on the page.
@@ -171,9 +171,9 @@ These are gaps between the study and a housing microfinance workflow. The page h
 ### 7. Wording
 - The abstract says "four configurations" (A, A-def, B, C). The README says three architectures with A-def as a variant. This changes no number. The case study follows the brief: three architectures, A-def mentioned as a prompt-defense variant.
 
-## 9. Figures proposed for the one-page case study (for your approval)
+## 9. Figures for the one-page case study
 
-Each line says what I would claim and the exact figures. The page has room for four to five lines of evidence, so the first three are the core set. Mark each: approve, change, or drop.
+Each line says what the page claims and the exact figures. The page has room for four to five lines of evidence, so the first three are the core set. Outcome: E1 to E3 approved and used, E4 and E5 not used, E6 used as the scope line.
 
 | # | Claim on the page | Figures | Source, check |
 |---|---|---|---|
@@ -192,7 +192,7 @@ Figures I will **not** use, and why:
 - The plausibility slope. The paper says it gives no evidence that the LLM extractor is more easily fooled by plausible values.
 - Robustness results (LightGBM scorecard, second prompt wording, sampling seeds). They support the ordering of the architectures and add nothing a hiring manager needs.
 
-## 10. Wording constraints for the page (from your honesty rules)
+## 10. Wording constraints for the page (honesty rules)
 
 - Say once, in plain words, that this is a proposed design built on a published study. Do not describe any deployment.
 - Say that the study used synthetic documents and no human reviewers, and that nothing here has been validated for lending.

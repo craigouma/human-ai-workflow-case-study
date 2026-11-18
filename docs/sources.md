@@ -1,6 +1,6 @@
 # Sources
 
-Status: **draft for Craig's approval.** All six sources were opened and read on 2026-11-18. For the three PDFs I extracted the full text and read the passages cited. For the three web pages I downloaded the page and checked the quoted phrases in the page text. Search snippets were not used as evidence.
+Status: complete. All six sources were opened and read on 2026-11-18. For the three PDFs I extracted the full text and read the passages cited. For the three web pages I downloaded the page and checked the quoted phrases in the page text. Search snippets were not used as evidence.
 
 These sources give public context on the Terwilliger Center for Innovation in Shelter (TCIS) and on housing microfinance. They say nothing about how TCIS or Habitat run any internal process, and the case study makes no such claim.
 
@@ -69,4 +69,4 @@ The problem paragraph on the page needs **one** verified source. I suggest S3 fo
 - Any statement about TCIS staff, TCIS partners' internal processes, or how any lender uses documents today beyond what S3 and S4 say.
 - A measured time per loan file. S5 gives a model, and no source here gives an observed time for document-based assessment in housing microfinance.
 - Anything about AI use at Habitat or at housing lenders.
-- Anything about Kenyan data protection law. If the design section cites consent and data minimisation as legal requirements, I need a verified source for that first. I can add one if you want it (a seventh source).
+- Anything about Kenyan data protection law. If the design section cites consent and data minimisation as legal requirements, a verified source is needed for that first, and none is recorded here.

@@ -7,7 +7,7 @@ Reviewed text: `case_study.md`, which `build/build_case_study.js` also uses to m
 | Check | How | Result |
 |---|---|---|
 | Every sentence traced to evidence | Table below. Each claim is matched to `docs/evidence.md`, `docs/sources.md` or a design document. | Pass. Two items are premises from the brief, not evidence, and are labelled. |
-| Every number on the page | Script pulled all numbers from `case_study.md` and compared them with the figures you approved (E1 to E3). | Pass. 12 of 12 approved figures used. The only other numbers are "2015" and "p. 18" (source S3). |
+| Every number on the page | Script pulled all numbers from `case_study.md` and compared them with the figures approved for the page (E1 to E3). | Pass. 12 of 12 approved figures used. The only other numbers are "2015" and "p. 18" (source S3). |
 | Banned style | Script searched for em dashes, en dashes, "not X but Y", "rather than", "not just" and "not only", and buzzwords (leverage, synergy, transformative, seamless, holistic, empower, robust, unlock and others). | None found in `case_study.md`, the README or the landing page content. In `docs/` the only hits are the real title of a CGAP post that `docs/sources.md` cites, and the ordinary word "Robustness" in a heading of `docs/evidence.md` about the study's robustness checks. |
 | Plain language | Readability score and a jargon check (below). | Pass, with one judgement call noted. |
 | One A4 page | `build/build.sh` stops with an error unless `pdfinfo` reports one page. | Pass. |
@@ -20,7 +20,7 @@ Type: **Evidence** is a figure from the study (`docs/evidence.md`). **Source** i
 
 | Section | Claim | Backed by | Type |
 |---|---|---|---|
-| Title | "Loan files take too long to read." | The brief's case description ("slow"). No source gives a measured time. | **Premise** |
+| Title | "Reading loan files by hand: keeping the officer in charge" | Names the current step (reading by hand) and the design goal. It makes no claim about time. | Design |
 | Framing | A proposed design, not deployed, user test is a plan. | Honesty rule 1. `docs/test_plan.md` status line. | Design |
 | Problem | Housing microfinance lenders make small loans that fund building in stages. | S2, S3 | Source |
 | Problem | Many clients earn informally and have no steady, verifiable income, so approval rests on an officer's judgement of cash flow and character. | S3, page 18 ("loan approval process... based on an assessment of the applicant's ability to pay (cash flow) and assumed willingness to pay (character assessment)", clients "do not have steady and verifiable income") | Source |
@@ -50,6 +50,8 @@ Type: **Evidence** is a figure from the study (`docs/evidence.md`). **Source** i
 3. **"A test plan that non-technical teams can use" changed to "written for non-technical teams".** The first form claims a result nobody has tested.
 4. **"Attacked cases" changed to "attacks".** Plainer, and shorter.
 5. **The DOCX now embeds its font.** See the table above.
+6. **Title shortened** and its time claim removed (see decision 1).
+7. **All text set in black**, in the PDF, the DOCX and the diagram (see decision 6).
 
 ## Plain-language check
 
@@ -68,11 +70,12 @@ Type: **Evidence** is a figure from the study (`docs/evidence.md`). **Source** i
 - Terms kept off the page: LLM, extraction, AUROC, preregistered, oracle, model names, ASR.
 - **Judgement call:** the evidence paragraph still has a long sentence (38 words) with several percentages. I kept it because every figure was approved, and splitting it would push the page past one sheet. A hiring manager can skim it for the two contrasts (decider against reader, and falsified documents with and without checks).
 
-## Open items for you
+## Decisions and open items
 
-1. **Title premise.** "Take too long to read" is the brief's premise, not a measurement. If you prefer a title that makes no claim about time, "Reading loan files by hand: a redesign that keeps the loan officer in charge" works.
-2. **Author name.** I used "Craig Carlos Ouma", the name on the paper and the Scholar profile. The brief says "Craig Ouma". It is one line in `build/build_case_study.js`.
+1. **Title.** Shortened to "Reading loan files by hand: keeping the officer in charge". The earlier title ("take too long to read") rested on the brief's premise and not on a measurement. The new one makes no claim about time.
+2. **Author name.** "Craig Carlos Ouma", as on the paper and the Scholar profile.
 3. **Optional figures not used.** E4 (the currency check) and E5 (decision quality) are in `docs/evidence.md` and the design documents, and left off the page.
-4. **Seventh source.** No Kenya data-protection source was added, so the design states consent and minimisation as design choices and makes no legal claim.
+4. **No seventh source.** No Kenya data-protection source was added, so the design states consent and minimisation as design choices and makes no legal claim.
 5. **Optional real test.** Not run. The page says the test is planned.
-6. **Publishing.** Nothing is pushed or published. Creating the GitHub repository, pushing and turning on GitHub Pages wait for your approval.
+6. **Text colour.** All text on the page is black. Navy is used only for box fills and rules in the diagram.
+7. **Publishing.** The repository is public and the page is served by GitHub Pages from `main`.
