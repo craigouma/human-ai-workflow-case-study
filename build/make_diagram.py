@@ -1,7 +1,7 @@
 """Generate diagram/workflow.svg: the current and redesigned loan assessment workflows, side by side.
 
 Usage: python3 build/make_diagram.py [output.svg]
-Standard library only. One accent colour (navy) and black on white. No icons, no gradients.
+Standard library only. One accent colour (navy) and black on white. All text is black or white. Navy is used for fills and lines only. No icons, no gradients.
 
 Encoding, shown in the legend:
   white box with black outline  = a person does it
@@ -58,7 +58,7 @@ def card(x, w, i, kind, title, detail, tag):
         t1, t2 = INK, INK2
     elif kind == "machine":
         box = f'<rect x="{x}" y="{y}" width="{w}" height="{CARD_H}" rx="2" fill="{TINT}" stroke="{NAVY}" stroke-width="1.25"/>'
-        t1, t2 = NAVY, INK2
+        t1, t2 = INK, INK2
     else:
         box = f'<rect x="{x}" y="{y}" width="{w}" height="{CARD_H}" rx="2" fill="{NAVY}" stroke="{NAVY}" stroke-width="1.25"/>'
         t1, t2 = "#ffffff", "#ffffff"
@@ -67,7 +67,7 @@ def card(x, w, i, kind, title, detail, tag):
            f'<text x="{x + 14}" y="{y + 35}" font-size="13.5" fill="{t2}">{escape(detail)}</text>']
     if tag:
         out.append(f'<text x="{x + w - 12}" y="{y + 18}" font-size="12" font-weight="700" letter-spacing="1.2" '
-                   f'text-anchor="end" fill="{NAVY}">{tag}</text>')
+                   f'text-anchor="end" fill="{INK}">{tag}</text>')
     return "\n    ".join(out)
 
 
@@ -88,7 +88,7 @@ def build():
     p.append(f'  <text x="{LX}" y="19" font-size="17" font-weight="700" letter-spacing="0.6" fill="{INK}">TODAY</text>')
     p.append(f'  <text x="{LX + 72}" y="19" font-size="13.5" fill="{INK2}">generic model, not any one lender</text>')
     p.append(f'  <rect x="{LX}" y="28" width="{LW}" height="2" fill="{INK}"/>')
-    p.append(f'  <text x="{RX}" y="19" font-size="17" font-weight="700" letter-spacing="0.6" fill="{NAVY}">REDESIGNED</text>')
+    p.append(f'  <text x="{RX}" y="19" font-size="17" font-weight="700" letter-spacing="0.6" fill="{INK}">REDESIGNED</text>')
     p.append(f'  <text x="{RX + 124}" y="19" font-size="13.5" fill="{INK2}">proposed, not deployed</text>')
     p.append(f'  <rect x="{RX}" y="28" width="{RW}" height="2" fill="{NAVY}"/>')
 
@@ -112,7 +112,7 @@ def build():
     # feedback loop: the log feeds back into the checks
     y7, y3 = centre(6), centre(2)
     p.append(f'  <path d="M{RX + RW},{y7} H{LOOP_X} V{y3} H{RX + RW + 2}" fill="none" stroke="{NAVY}" stroke-width="1.25" stroke-dasharray="4 3" marker-end="url(#back)"/>')
-    p.append(f'  <text transform="translate({LOOP_X + 15},{(y7 + y3) / 2}) rotate(-90)" font-size="12" text-anchor="middle" fill="{NAVY}">Overrides refine the checks</text>')
+    p.append(f'  <text transform="translate({LOOP_X + 15},{(y7 + y3) / 2}) rotate(-90)" font-size="12" text-anchor="middle" fill="{INK}">Overrides refine the checks</text>')
 
     # legend
     ly = ROW0 + 6 * PITCH + CARD_H + 24
@@ -125,7 +125,7 @@ def build():
     for _, shape, label, tx in items:
         p.append("  " + shape)
         p.append(f'  <text x="{tx}" y="{ly + 12}" font-size="13.5" fill="{INK}">{label}</text>')
-    p.append(f'  <text x="{RX + RW}" y="{ly + 12}" font-size="13.5" font-weight="700" text-anchor="end" fill="{NAVY}">The AI and the scorecard never decide</text>')
+    p.append(f'  <text x="{RX + RW}" y="{ly + 12}" font-size="13.5" font-weight="700" text-anchor="end" fill="{INK}">The AI and the scorecard never decide</text>')
     p.append('</svg>')
     return "\n".join(p) + "\n"
 

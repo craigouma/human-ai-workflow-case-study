@@ -9,7 +9,7 @@
   <text x="10" y="19" font-size="17" font-weight="700" letter-spacing="0.6" fill="#111111">TODAY</text>
   <text x="82" y="19" font-size="13.5" fill="#3a3a3a">generic model, not any one lender</text>
   <rect x="10" y="28" width="425" height="2" fill="#111111"/>
-  <text x="565" y="19" font-size="17" font-weight="700" letter-spacing="0.6" fill="#1F3A5F">REDESIGNED</text>
+  <text x="565" y="19" font-size="17" font-weight="700" letter-spacing="0.6" fill="#111111">REDESIGNED</text>
   <text x="689" y="19" font-size="13.5" fill="#3a3a3a">proposed, not deployed</text>
   <rect x="565" y="28" width="388" height="2" fill="#1F3A5F"/>
   <line x1="500" y1="82.0" x2="500" y2="108.0" stroke="#111111" stroke-width="1.5" marker-end="url(#down)"/>
@@ -43,9 +43,9 @@
   </g>
   <g>
     <rect x="565" y="100" width="388" height="42" rx="2" fill="#E6ECF4" stroke="#1F3A5F" stroke-width="1.25"/>
-    <text x="579" y="118" font-size="15" font-weight="700" fill="#1F3A5F">AI reads the documents</text>
+    <text x="579" y="118" font-size="15" font-weight="700" fill="#111111">AI reads the documents</text>
     <text x="579" y="135" font-size="13.5" fill="#3a3a3a">Lists each field and where it came from</text>
-    <text x="941" y="118" font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="end" fill="#1F3A5F">AI</text>
+    <text x="941" y="118" font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="end" fill="#111111">AI</text>
   </g>
   <line x1="435" y1="173.0" x2="487" y2="173.0" stroke="#111111" stroke-width="1" />
   <line x1="513" y1="173.0" x2="565" y2="173.0" stroke="#111111" stroke-width="1" />
@@ -58,9 +58,9 @@
   </g>
   <g>
     <rect x="565" y="152" width="388" height="42" rx="2" fill="#E6ECF4" stroke="#1F3A5F" stroke-width="1.25"/>
-    <text x="579" y="170" font-size="15" font-weight="700" fill="#1F3A5F">Code raises review flags</text>
+    <text x="579" y="170" font-size="15" font-weight="700" fill="#111111">Code raises review flags</text>
     <text x="579" y="187" font-size="13.5" fill="#3a3a3a">Missing, out of range, conflicting, unsure</text>
-    <text x="941" y="170" font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="end" fill="#1F3A5F">CODE</text>
+    <text x="941" y="170" font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="end" fill="#111111">CODE</text>
   </g>
   <line x1="435" y1="225.0" x2="487" y2="225.0" stroke="#111111" stroke-width="1" />
   <line x1="513" y1="225.0" x2="565" y2="225.0" stroke="#111111" stroke-width="1" />
@@ -87,9 +87,9 @@
   </g>
   <g>
     <rect x="565" y="256" width="388" height="42" rx="2" fill="#E6ECF4" stroke="#1F3A5F" stroke-width="1.25"/>
-    <text x="579" y="274" font-size="15" font-weight="700" fill="#1F3A5F">Scorecard recommends, with reasons</text>
+    <text x="579" y="274" font-size="15" font-weight="700" fill="#111111">Scorecard recommends, with reasons</text>
     <text x="579" y="291" font-size="13.5" fill="#3a3a3a">A suggestion only. It never declines anyone</text>
-    <text x="941" y="274" font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="end" fill="#1F3A5F">CODE</text>
+    <text x="941" y="274" font-size="12" font-weight="700" letter-spacing="1.2" text-anchor="end" fill="#111111">CODE</text>
   </g>
   <line x1="435" y1="329.0" x2="487" y2="329.0" stroke="#1F3A5F" stroke-width="1" />
   <line x1="513" y1="329.0" x2="565" y2="329.0" stroke="#1F3A5F" stroke-width="1" />
@@ -120,7 +120,7 @@
     <text x="579" y="395" font-size="13.5" fill="#3a3a3a">Team lead reviews patterns monthly, by group</text>
   </g>
   <path d="M953,381.0 H968 V173.0 H955" fill="none" stroke="#1F3A5F" stroke-width="1.25" stroke-dasharray="4 3" marker-end="url(#back)"/>
-  <text transform="translate(983,277.0) rotate(-90)" font-size="12" text-anchor="middle" fill="#1F3A5F">Overrides refine the checks</text>
+  <text transform="translate(983,277.0) rotate(-90)" font-size="12" text-anchor="middle" fill="#111111">Overrides refine the checks</text>
   <line x1="10" y1="414" x2="953" y2="414" stroke="#111111" stroke-width="0.75"/>
   <rect x="10" y="426" width="28" height="14" rx="2" fill="#ffffff" stroke="#111111" stroke-width="1.25"/>
   <text x="50" y="438" font-size="13.5" fill="#111111">Person does it</text>
@@ -128,5 +128,5 @@
   <text x="240" y="438" font-size="13.5" fill="#111111">AI or code does it</text>
   <rect x="410" y="426" width="28" height="14" rx="2" fill="#1F3A5F" stroke="#1F3A5F" stroke-width="1.25"/>
   <text x="450" y="438" font-size="13.5" fill="#111111">Person decides</text>
-  <text x="953" y="438" font-size="13.5" font-weight="700" text-anchor="end" fill="#1F3A5F">The AI and the scorecard never decide</text>
+  <text x="953" y="438" font-size="13.5" font-weight="700" text-anchor="end" fill="#111111">The AI and the scorecard never decide</text>
 </svg>
