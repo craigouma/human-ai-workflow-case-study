@@ -1,6 +1,6 @@
 // Builds case_study.md and case_study.docx from one text source, so the two always match.
 // Usage: node build/build_case_study.js   (run from the repository root; needs the `docx` npm package)
-// Page: A4, 15 mm margins, one column, CMU Serif (Computer Modern) 10 pt, navy headings.
+// Page: A4, 15 mm margins, one column, CMU Serif (Computer Modern) 10 pt, all text black.
 
 const fs = require("fs");
 const path = require("path");
@@ -10,7 +10,7 @@ const {
 } = require(process.env.DOCX_MODULE || "docx");
 
 const ROOT = process.cwd();
-const NAVY = "1F3A5F";
+const INK = "000000";      // all text and rules are black
 const FONT = "CMU Serif";
 const BODY = 20;            // half-points: 10 pt
 const LINE = Number(process.env.LINE_EXACT || 228);  // twentieths of a point: 228 = 11.4 pt
@@ -25,7 +25,7 @@ const LINKS = {
 };
 
 const C = {
-  title: "Loan files take too long to read. A redesign that keeps the loan officer in charge",
+  title: "Reading loan files by hand: keeping the officer in charge",
   byline: "Craig Carlos Ouma, data and systems engineer, Nairobi",
   framing: [
     { i: "A proposed design built on my published study. Not deployed at Habitat or any lender. The user test is a plan." },
@@ -136,7 +136,7 @@ function docxRuns(runs) {
     if (r.link) {
       return new ExternalHyperlink({
         link: r.url,
-        children: [new TextRun({ text: r.link, font: FONT, size: BODY, color: NAVY, underline: {} })],
+        children: [new TextRun({ text: r.link, font: FONT, size: BODY, color: INK, underline: {} })],
       });
     }
     return run("");
@@ -153,11 +153,11 @@ function build() {
   const children = [
     new Paragraph({
       spacing: { before: 0, after: 20, line: 340, lineRule: LineRuleType.EXACT },
-      children: [new TextRun({ text: C.title, font: FONT, size: 33, bold: true, color: NAVY })],
+      children: [new TextRun({ text: C.title, font: FONT, size: 33, bold: true, color: INK })],
     }),
     new Paragraph({
       spacing: spacing(0, 10),
-      children: [run(C.byline, { color: NAVY, smallCaps: false })],
+      children: [run(C.byline, { color: INK, smallCaps: false })],
     }),
     new Paragraph({ spacing: spacing(0, 20), alignment: AlignmentType.LEFT, children: docxRuns(C.framing) }),
   ];
@@ -165,9 +165,9 @@ function build() {
   for (const s of C.sections) {
     children.push(new Paragraph({
       keepNext: true,
-      spacing: { before: 80, after: 30, line: 250, lineRule: LineRuleType.EXACT },
-      border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: NAVY, space: 1 } },
-      children: [new TextRun({ text: s.heading, font: FONT, size: 21, bold: true, color: NAVY })],
+      spacing: { before: 110, after: 30, line: 250, lineRule: LineRuleType.EXACT },
+      border: { bottom: { style: BorderStyle.SINGLE, size: 4, color: INK, space: 1 } },
+      children: [new TextRun({ text: s.heading, font: FONT, size: 21, bold: true, color: INK })],
     }));
     for (const b of s.blocks) {
       if (b.p) {
@@ -204,18 +204,30 @@ function build() {
 
   return new Document({
     creator: "Craig Carlos Ouma",
-    title: "Loan files take too long to read: a redesign that keeps the loan officer in charge",
+    title: "Reading loan files by hand: keeping the officer in charge",
     description: "One-page design case study. A proposed design built on a published study. Not deployed at any lender. The user test is planned.",
     hyphenation: { autoHyphenation: true, consecutiveHyphenLimit: 2 },
     styles: {
-      default: { document: { run: { font: FONT, size: BODY, language: { value: "en-GB" } } } },
+      // The generator ships blue defaults for headings, titles and links. Set them black so that
+      // text added later in Word is black too.
+      default: {
+        document: { run: { font: FONT, size: BODY, language: { value: "en-GB" } } },
+        title: { run: { font: FONT, color: INK } },
+        heading1: { run: { font: FONT, color: INK } },
+        heading2: { run: { font: FONT, color: INK } },
+        heading3: { run: { font: FONT, color: INK } },
+        heading4: { run: { font: FONT, color: INK } },
+        heading5: { run: { font: FONT, color: INK } },
+        heading6: { run: { font: FONT, color: INK } },
+        hyperlink: { run: { color: INK, underline: { type: "single" } } },
+      },
     },
     numbering: {
       config: [{
         reference: "bul",
         levels: [{
           level: 0, format: LevelFormat.BULLET, text: "•", alignment: AlignmentType.LEFT,
-          style: { paragraph: { indent: { left: 300, hanging: 220 } }, run: { font: FONT, color: NAVY } },
+          style: { paragraph: { indent: { left: 300, hanging: 220 } }, run: { font: FONT, color: INK } },
         }],
       }],
     },
