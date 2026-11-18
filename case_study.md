@@ -16,12 +16,12 @@ The AI reads the documents and lists each field with the place it came from. Cod
 
 ## Evidence from my own study
 
-In my study, planted text won an approval in 41.8% and 65.0% of attacked cases when a model decided (two small models), against 2.7% and 2.0% when the model only read fields and a scorecard decided. Falsified documents passed the scorecard in 16.7% to 19.8% of cases, and an error-free reader passed 19.7% to 19.8%, so reading is not verification. Code checks about halved that (10.1% with an error-free reader) but sent more clean files to a person (32.3% to 56.1% against 15.5% to 17.5%), mostly misread fields. Synthetic documents, no human reviewers.
+In my study, planted text won an approval in 41.8% and 65.0% of attacks when a model decided, against 2.7% and 2.0% when the model only read fields and a scorecard decided. Falsified documents passed the scorecard in 16.7% to 19.8% of cases, and an error-free reader passed 19.7% to 19.8%, so reading is not verification. Code checks about halved that (10.1% with an error-free reader) but sent more clean files to a person (32.3% to 56.1% against 15.5% to 17.5%), mostly misread fields. Caveats: synthetic consumer-credit documents, small models, no human reviewers.
 
 ## Responsible AI choices
 
 - **The loan officer decides.** The AI reads and flags, the scorecard recommends, the officer can always override, and the system never declines anyone. Every applicant can ask for a person to handle the file.
-- **Triggers live in code.** The four triggers are written in code, not in a prompt, and each recommendation shows the fields it used and where each came from.
+- **Review flags are set in code.** The four checks run in code, not in a prompt, and each recommendation shows the fields it used and where each came from.
 - **The applicant is protected.** Consent first, only needed fields kept, overrides logged and reviewed monthly.
 - **Three risks, each with a response.** Officers may trust the screen (show sources, require reasons, treat zero overrides as a warning). Falsified documents that no model detects alone (keep visits and independent checks). Unfair patterns across groups (measure by group before use, which my study did not).
 
@@ -31,7 +31,7 @@ In my study, planted text won an approval in 41.8% and 65.0% of attacked cases w
 
 ## What this shows I can do
 
-It shows I can map a document-heavy workflow, redesign it so AI reads and a person decides, and turn results from my own study into design rules and a test plan that non-technical teams can use.
+It shows I can map a document-heavy workflow, redesign it so AI reads and a person decides, and turn results from my own study into design rules and a test plan written for non-technical teams.
 
 ## Links
 
