@@ -1,0 +1,103 @@
+{
+  "meta": {
+    "title": "Loan files take too long to read",
+    "subtitle": "A redesign that keeps the loan officer in charge",
+    "html_title": "Loan files take too long to read: a redesign that keeps the loan officer in charge",
+    "og_title": "Loan files take too long to read: a redesign that keeps the loan officer in charge",
+    "og_description": "A design case for housing microfinance. The AI reads documents, code raises review flags, a scorecard recommends and the loan officer decides. Built on a published study. Not deployed at any lender. The user test is a plan.",
+    "og_image": "diagram/workflow.png",
+    "scholar": false,
+    "tags": ["Case study", "Human-AI collaboration", "Housing microfinance", "Design, not deployed"],
+    "date_label": "November 2026",
+    "year": "2026",
+    "online_date": "2026/11/18",
+    "authors": [
+      {
+        "name": "Craig Carlos Ouma",
+        "scholar": "Ouma, Craig Carlos",
+        "affiliation": "Data and systems engineer, Nairobi"
+      }
+    ],
+    "site_url": "https://craigouma.github.io/human-ai-workflow-case-study/",
+    "pdf": "case_study.pdf",
+    "keywords": ["human-AI collaboration", "workflow design", "housing microfinance", "loan assessment"]
+  },
+  "actions": [
+    {"label": "Download the one-page PDF", "url": "case_study.pdf"},
+    {"label": "Word version", "url": "case_study.docx"},
+    {"label": "Diagram (SVG)", "url": "diagram/workflow.svg"},
+    {"label": "Source files", "url": "https://github.com/craigouma/human-ai-workflow-case-study"}
+  ],
+  "stats": [
+    {"value": "41.8 / 65.0%", "label": "Attacks that won an approval when a model made the decision (two small models, synthetic documents)"},
+    {"value": "2.7 / 2.0%", "label": "The same attacks when the model only read fields and a scorecard decided"},
+    {"value": "16.7 to 19.8%", "label": "Falsified documents that passed the scorecard. An error-free reader passed 19.7% to 19.8%"},
+    {"value": "10.1%", "label": "Falsified documents that passed code checks when the reader made no errors"}
+  ],
+  "key_finding": "Let the AI read the documents and let a person decide. In my study, taking the decision away from the model cut successful attacks from 41.8% and 65.0% to 2.7% and 2.0%. Reading is not verification, though. Falsified documents still passed a scorecard in 16.7% to 19.8% of cases, so checks and people stay in the design.",
+  "abstract": "Housing microfinance lenders make small loans that fund building in stages. Many clients earn informally and have no steady, verifiable income, so approval rests on an officer&rsquo;s judgement of their cash flow and character (<a href=\"https://www.habitat.org/sites/default/files/15.45203.HMF_.Handbook_P1.MNL_.pdf\" target=\"_blank\" rel=\"noopener\">Habitat for Humanity handbook, 2015, p. 18</a>). Each file is read, compared and judged by a person, so officer time is the limit. In the redesign the AI reads the documents and lists each field with the place it came from. Code raises a review flag for a missing field, a value outside the normal range for the client&rsquo;s group, values that disagree across documents, or low reading confidence. The officer checks the flags against the source, visits where needed, and sees a recommendation from a simple scorecard (a short table of points) with its reasons. The officer decides and can override. The AI never makes the decision, because in my study that is where it was easiest to steer.",
+  "scope": "This is a design case. It is not deployed at Habitat for Humanity or at any lender, and no loan officer has used it. The starting workflow is a generic, simplified model built from public sources, and it does not describe any lender&rsquo;s process. The evidence comes from synthetic consumer-credit documents, small open models and no human reviewers. The user test is described as a plan, and no test has been run.",
+  "table": {
+    "title": "The redesigned workflow, step by step",
+    "align": "left",
+    "header": ["Step", "Who or what does it", "What the human does", "Control that protects the person"],
+    "groups": [
+      {
+        "name": "",
+        "rows": [
+          ["*1. Intake and consent", "Loan officer, with a simple on-screen form", "Explains what the AI will read and why, asks for consent, offers a person-only route", "Consent is recorded. Only the fields the checks and the scorecard need are kept. The person-only route has the same decision rights."],
+          ["*2. Collect documents", "Applicant and loan officer (unchanged)", "Collects identity papers, income evidence, the builder&rsquo;s estimate and land evidence", "The officer can mark &ldquo;no formal record&rdquo;. A missing formal document never causes an automatic decline."],
+          ["*3. AI reads the documents", "AI model", "Nothing required. Fields can be corrected in step 5", "A fixed list of fields, each with its place in the document. No decision field. Unreadable output becomes &ldquo;needs a person&rdquo;."],
+          ["*4. Code checks and review flags", "Code, no AI", "Nothing required. Flags arrive in step 5", "Four flags set in code: missing field, value outside the plausible range for the client&rsquo;s group, values that disagree, low reading confidence."],
+          ["*5. Officer reviews flags and checks fields", "Loan officer, with the on-screen view", "Checks each flagged field against the highlighted source, fixes misreadings, resolves each flag, visits when needed", "Every flag needs a recorded resolution. Every correction is logged. No recommendation is final while a flag is open."],
+          ["*6. Scorecard recommends", "Simple points-based scorecard (code)", "Reads the reasons and the fields used. May disagree", "Shows each field, its source and its points. A suggestion only. A &ldquo;decline&rdquo; suggestion always goes to a person. Built and checked on the lender&rsquo;s own data."],
+          ["*7. Loan officer decides", "Loan officer, and a manager or committee where the lender&rsquo;s rules require it", "Approves, changes terms, declines with reasons or refers. Can override in either direction", "Only a person can decline. The applicant hears the reasons and can ask for a second look. Every override needs a reason."],
+          ["*8. Log and learn", "System log, reviewed by a team lead", "Reviews overrides, corrections and flags monthly, including patterns by group", "An override rate near zero is a warning. Error, flag, referral and waiting-time rates are compared across groups."]
+        ]
+      }
+    ],
+    "note": "Source: docs/redesigned_workflow.md. The diagram below merges steps 1 and 2 into one row."
+  },
+  "findings_title": "Responsible AI choices, and the test plan",
+  "findings": [
+    {"title": "The loan officer decides", "text": "The AI reads and flags, a simple scorecard recommends, and the officer can always override. The system never declines anyone, and every applicant can ask for a person to handle the file."},
+    {"title": "Review flags are set in code", "text": "The four checks run in code, not in a prompt. Each recommendation shows the fields it used and where each came from, so the officer can check it in seconds."},
+    {"title": "The applicant is protected", "text": "Consent comes first and only needed fields are kept. Overrides are logged with their reasons and reviewed each month."},
+    {"title": "Three risks, each with a response", "text": "Officers may trust the screen, so the design shows sources, requires reasons and treats zero overrides as a warning. Falsified documents that no model detects alone need visits and independent checks. Unfair patterns across groups need measuring by group before use, which my study did not do."},
+    {"title": "How I would test it (planned, not yet run)", "text": "Eight to twelve loan officers each assess matched synthetic housing loan files twice, the current way and with the redesign. Some files carry planted problems, including plausible AI misreadings, to see if officers catch them. I would measure time per file, agreement with the scorecard and an expert reference, overrides and their reasons, planted problems caught, and officers&rsquo; trust and confusion. Pass rules are set first."},
+    {"title": "What this shows I can do", "text": "It shows I can map a document-heavy workflow, redesign it so AI reads and a person decides, and turn results from my own study into design rules and a test plan written for non-technical teams."}
+  ],
+  "figures_title": "Key figure",
+  "figures": [
+    {
+      "src": "diagram/workflow.png",
+      "alt": "Seven aligned rows compare a typical manual loan assessment with the proposed redesign. In the redesign an AI reads the documents, code raises review flags, the officer checks them, a scorecard recommends and the loan officer decides and can override. Overrides are logged and refine the checks.",
+      "caption": "Today and the redesign, side by side. Rows are aligned. White boxes are done by a person, tinted boxes by AI or code, and navy boxes are the human decision points."
+    }
+  ],
+  "data": {
+    "title": "Files in the repository",
+    "header": ["File", "What it holds"],
+    "rows": [
+      ["<a href=\"case_study.pdf\">case_study.pdf</a>", "The one-page case study (also as Word and Markdown)"],
+      ["<a href=\"https://github.com/craigouma/human-ai-workflow-case-study/blob/main/docs/evidence.md\" target=\"_blank\" rel=\"noopener\">docs/evidence.md</a>", "Every figure taken from the study, with how it was checked and where it falls short"],
+      ["<a href=\"https://github.com/craigouma/human-ai-workflow-case-study/blob/main/docs/sources.md\" target=\"_blank\" rel=\"noopener\">docs/sources.md</a>", "Six public sources on housing microfinance, each with what it supports and what it does not"],
+      ["<a href=\"https://github.com/craigouma/human-ai-workflow-case-study/blob/main/docs/current_workflow.md\" target=\"_blank\" rel=\"noopener\">docs/current_workflow.md</a>", "The generic model of today&rsquo;s workflow, eight steps"],
+      ["<a href=\"https://github.com/craigouma/human-ai-workflow-case-study/blob/main/docs/redesigned_workflow.md\" target=\"_blank\" rel=\"noopener\">docs/redesigned_workflow.md</a>", "The redesign, review flags, named risks and open points"],
+      ["<a href=\"https://github.com/craigouma/human-ai-workflow-case-study/blob/main/docs/test_plan.md\" target=\"_blank\" rel=\"noopener\">docs/test_plan.md</a>", "The test plan with loan officers, including pass and stop rules set in advance"],
+      ["<a href=\"https://github.com/craigouma/human-ai-workflow-case-study/blob/main/docs/review_log.md\" target=\"_blank\" rel=\"noopener\">docs/review_log.md</a>", "Where each sentence on the page comes from, and what the review changed"]
+    ],
+    "note": "No user test has been run, so there is no results file."
+  },
+  "links": [
+    {"label": "Study repository", "url": "https://github.com/craigouma/llm-underwriting-injection"},
+    {"label": "Study paper page", "url": "https://craigouma.github.io/llm-underwriting-injection/"},
+    {"label": "Google Scholar profile", "url": "https://scholar.google.com/citations?user=hI6OXwsAAAAJ&hl=en"},
+    {"label": "Habitat for Humanity housing microfinance handbook, 2015", "url": "https://www.habitat.org/sites/default/files/15.45203.HMF_.Handbook_P1.MNL_.pdf"}
+  ],
+  "footer": [
+    "Craig Carlos Ouma &middot; Nairobi &middot; 2026",
+    "A design case built on a published study. Not deployed at Habitat for Humanity or at any lender. The user test is a plan.",
+    "Independent work, not produced, reviewed or endorsed by Habitat for Humanity or any lender"
+  ]
+}
