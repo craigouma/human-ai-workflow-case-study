@@ -16,7 +16,7 @@ The AI reads the documents and lists each field with the place it came from. Cod
 
 ## Evidence from my own study
 
-In my study, planted text won an approval in 41.8% and 65.0% of attacks when a model decided, against 2.7% and 2.0% when the model only read fields and a scorecard decided. Falsified documents passed the scorecard in 16.7% to 19.8% of cases, and an error-free reader passed 19.7% to 19.8%, so reading is not verification. Code checks about halved that (10.1% with an error-free reader) but sent more clean files to a person (32.3% to 56.1% against 15.5% to 17.5%), mostly misread fields. Caveats: synthetic consumer-credit documents, small models, no human reviewers.
+In my study, planted text won an approval in 41.8% and 65.0% of attacks when a model decided, against 2.7% and 2.0% when the model only read fields and a scorecard decided. Falsified documents passed the scorecard in 16.7% to 19.8% of cases, and an error-free reader passed 19.7% to 19.8%, so reading is not verification. Code checks about halved that (10.1% with an error-free reader) but sent more clean files to a person (32.3% to 56.1% against 15.5% to 17.5%), mostly misread fields. Caveats: no human reviewers, so the officer’s role is untested, plus synthetic consumer-credit documents and small models.
 
 ## Responsible AI choices
 
