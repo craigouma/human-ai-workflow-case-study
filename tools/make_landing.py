@@ -4,7 +4,8 @@ Usage: python3 tools/make_landing.py [content.json] [numbers.tex or -] [index.ht
 Standard library only. Strings in the content file may contain {{macroName}}, which is replaced by the value of
 \\newcommand{\\macroName}{value} in the numbers file, so the page and the paper always show the same figures.
 Pass - as the numbers file for papers whose figures are written into the content file.
-Every block except the abstract, the cite box and the footer is optional.
+Every block except the abstract and the footer is optional. Set "scholar": false in meta to leave out the Google Scholar
+citation_* tags (for pages that are not papers). Leave out "bibtex" to drop the cite box and "keywords_display" to drop the keywords row.
 The layout is the editorial paper layout shared by the author's papers: serif text on warm paper, one accent colour,
 labelled rows, a headline-number strip, figures with ruled captions and a BibTeX box.
 """
@@ -187,7 +188,7 @@ def render(c: dict) -> str:
     pdf = url + m["pdf"]
     scholar_title = m.get("scholar_title") or (m["title"] + (": " + m["subtitle"] if m.get("subtitle") else ""))
     html_title = m.get("html_title") or scholar_title
-    heads = [
+    scholar_tags = [
         f'<meta name="citation_title" content="{attr(scholar_title)}">',
         *[f'<meta name="citation_author" content="{attr(a["scholar"])}">' for a in m["authors"]],
         f'<meta name="citation_publication_date" content="{m["year"]}">',
@@ -196,6 +197,9 @@ def render(c: dict) -> str:
         f'<meta name="citation_abstract_html_url" content="{url}">',
         f'<meta name="citation_pdf_url" content="{pdf}">',
         f'<meta name="citation_keywords" content="{attr("; ".join(m["keywords"]))}">',
+    ] if m.get("scholar", True) else []
+    heads = [
+        *scholar_tags,
         f'<meta property="og:title" content="{attr(m.get("og_title") or m["title"])}">',
         f'<meta property="og:description" content="{attr(m["og_description"])}">',
         '<meta property="og:type" content="article">',
@@ -238,8 +242,10 @@ def render(c: dict) -> str:
     if c.get("data"):
         d = c["data"]
         parts.append(block(d["title"], table({"header": d["header"], "groups": [{"name": "", "rows": d["rows"]}], "note": d.get("note", ""), "align": "left"})))
-    parts.append(block("Keywords", f'<p class="kw">{"; ".join(m["keywords_display"])}</p>', "tight"))
-    parts.append(block("Cite this work", f'<div class="bib"><div class="bib-bar"><span>BibTeX</span><button onclick="copyBib(this)">Copy</button></div><pre id="bibtex">{html.escape(c["bibtex"])}</pre></div>'))
+    if m.get("keywords_display"):
+        parts.append(block("Keywords", f'<p class="kw">{"; ".join(m["keywords_display"])}</p>', "tight"))
+    if c.get("bibtex"):
+        parts.append(block("Cite this work", f'<div class="bib"><div class="bib-bar"><span>BibTeX</span><button onclick="copyBib(this)">Copy</button></div><pre id="bibtex">{html.escape(c["bibtex"])}</pre></div>'))
     links = "".join(f'<a href="{l["url"]}" target="_blank" rel="noopener"><span>{l["label"]}&nbsp;<i>&nearr;</i></span>'
                     f'<span>{re.sub(r"^https?://", "", l["url"]).rstrip("/")}</span></a>' for l in c["links"])
     parts.append(block("Links", f'<div class="links">{links}</div>'))
